@@ -107,22 +107,3 @@ def MultiplicativelyIndependent {k : ℕ} (α : Fin k → ℚ) : Prop :=
 Here `∏` is a finite product and `a = 0` means that every coefficient is zero. Because the exponents are integers, relations involving quotients are included.
 
 [`Verification.lean`](Verification.lean) puts both definitions directly into `exact_statement`. That theorem is derived from the main theorem; it is an independently written presentation of the statement, not a second mathematical proof. Comparing it with the README is a useful way to check that Lean has proved the intended claim.
-
-## Read the proof in an editor
-
-The files are ordinary text and can be read on GitHub. For interactive inspection, open the repository folder in Visual Studio Code with the Lean 4 extension. After the build, open `Main.lean` or `Verification.lean`. The Lean information panel shows types and proof goals as you move through the source; navigating to a declaration's definition follows the proof dependencies.
-
-Start with `logarithmic_linear_forms`, then `eventualLowerBound_all`, then `no_exceptional_sequence`. The first exposes the final statement, the second performs induction on the rank, and the third assembles the geometric, arithmetic, and analytic contradiction. The README gives the broader proof outline.
-
-## Publish the local repository on GitHub
-
-When ready to publish, create an empty repository named `bounds-on-linear-forms-in-logarithms` on GitHub. Leave GitHub's options to add a README, license, and `.gitignore` unchecked so the remote starts without a commit.
-
-From the local repository directory, connect it to the new remote and push the existing `main` branch, replacing `YOUR-USERNAME` with the GitHub owner:
-
-```text
-git remote add origin https://github.com/YOUR-USERNAME/bounds-on-linear-forms-in-logarithms.git
-git push -u origin main
-```
-
-Git may ask you to authenticate with GitHub. These commands publish the committed local files; any later README edits must be committed before they can be pushed.
