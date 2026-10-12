@@ -1,0 +1,18 @@
+name = "bounds-on-linear-forms-in-logarithms"
+version = "0.1.0"
+defaultTargets = ["GeneralizedLogarithms", "Verification"]
+
+[[require]]
+name = "log-irrationality-measure"
+git = "https://github.com/jdb19937/log-irrationality-measure.git"
+rev = "09aeeb095cebdce6791e24eff7f16d227edcdcb6"
+subDir = "lean"
+
+[[lean_lib]]
+name = "GeneralizedLogarithms"
+roots = ["GeneralizedLogarithms"]
+globs = ["GeneralizedLogarithms", "GeneralizedLogarithms.+"]
+
+[[lean_lib]]
+name = "Verification"
+roots = ["Verification"]

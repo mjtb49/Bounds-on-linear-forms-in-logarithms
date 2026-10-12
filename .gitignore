@@ -1,0 +1,9 @@
+.lake/
+*.olean
+*.ilean
+*.olean.private
+*.olean.server
+*.trace
+*.log
+.DS_Store
+Thumbs.db

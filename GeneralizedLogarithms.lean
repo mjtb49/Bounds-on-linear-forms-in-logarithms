@@ -1,0 +1,120 @@
+import GeneralizedLogarithms.Foundations
+import GeneralizedLogarithms.NormalBasisRigidity
+import GeneralizedLogarithms.ConormalDimension
+import GeneralizedLogarithms.Collision
+import GeneralizedLogarithms.MultivariateFrame
+import GeneralizedLogarithms.MonomialDifferential
+import GeneralizedLogarithms.LatticeReduction
+import GeneralizedLogarithms.LongitudinalComparison
+import GeneralizedLogarithms.GenericConormal
+import GeneralizedLogarithms.GenericConstancy
+import GeneralizedLogarithms.PolynomialPrimeAdapter
+import GeneralizedLogarithms.PolynomialCodimension
+import GeneralizedLogarithms.MultivariatePolynomialFrame
+import GeneralizedLogarithms.FiniteVariableBezout
+import GeneralizedLogarithms.MultivariateMultiplicity
+import GeneralizedLogarithms.MultivariateComparison
+import GeneralizedLogarithms.GeometricConstancy
+import GeneralizedLogarithms.MultivariatePersistence
+import GeneralizedLogarithms.MultivariateDegree
+import GeneralizedLogarithms.PersistentConstancy
+import GeneralizedLogarithms.SmallRankExclusion
+import GeneralizedLogarithms.IntegerGeneralPosition
+import GeneralizedLogarithms.OriginalRankOne
+import GeneralizedLogarithms.PersistentLongitudinal
+import GeneralizedLogarithms.MultifibreContact
+import GeneralizedLogarithms.MultilogBranchCoordinates
+import GeneralizedLogarithms.LatticeHeightComparison
+import GeneralizedLogarithms.MultifibreInequality
+import GeneralizedLogarithms.MultivariateJetDerivatives
+import GeneralizedLogarithms.MultivariateFormalJet
+import GeneralizedLogarithms.MultivariateBranchEvaluation
+import GeneralizedLogarithms.MultivariateCurveVanishing
+import GeneralizedLogarithms.MultivariateJetVanishing
+import GeneralizedLogarithms.MultivariateCurveConstancy
+import GeneralizedLogarithms.MultivariateCurveInequality
+import GeneralizedLogarithms.MultivariateAuxiliaryPolynomial
+import GeneralizedLogarithms.MultivariateCurveInterpolation
+import GeneralizedLogarithms.LongitudinalAsymptotics
+import GeneralizedLogarithms.TransverseWeightSeparation
+import GeneralizedLogarithms.RationalSubspaceLattice
+import GeneralizedLogarithms.SubspaceLowerBound
+import GeneralizedLogarithms.GeneralPositionSelection
+import GeneralizedLogarithms.MultivariateCompactJetPolynomial
+import GeneralizedLogarithms.MultivariateLogTruncation
+import GeneralizedLogarithms.MultivariateLogarithmicContactIdeal
+import GeneralizedLogarithms.MultivariateLogPolynomialAdapter
+import GeneralizedLogarithms.MultivariateFormalLogShift
+import GeneralizedLogarithms.MultivariateJetProductLocalization
+import GeneralizedLogarithms.MultivariateCompactLogJetIdeal
+import GeneralizedLogarithms.MultivariateExceptionalCurveDegree
+import GeneralizedLogarithms.MultivariateAffineJetPackets
+import GeneralizedLogarithms.GeneralPositionFamily
+import GeneralizedLogarithms.MultivariateAffineJetFramedPackets
+import GeneralizedLogarithms.MultivariateCurveMargin
+import GeneralizedLogarithms.RankOneHeightBound
+import GeneralizedLogarithms.MultivariateGeometryScale
+import GeneralizedLogarithms.MultivariateCurveModels
+import GeneralizedLogarithms.MultivariateParameters
+import GeneralizedLogarithms.MultivariateModeCapacity
+import GeneralizedLogarithms.MultivariateGeometricInterpolation
+import GeneralizedLogarithms.MultivariateRationalJet
+import GeneralizedLogarithms.MultivariateInterpolationMatrix
+import GeneralizedLogarithms.MultivariateTruncatedMatrix
+import GeneralizedLogarithms.MultivariateArithmetic
+import GeneralizedLogarithms.MultivariateInfiniteCollision
+import GeneralizedLogarithms.MultivariateArithmeticBounds
+import GeneralizedLogarithms.MultivariateMixedSeries
+import GeneralizedLogarithms.MultivariateAnalyticSeries
+import GeneralizedLogarithms.MultivariateRowTranslation
+import GeneralizedLogarithms.MultivariateTensorCoefficients
+import GeneralizedLogarithms.MultivariateColumnGrowth
+import GeneralizedLogarithms.MultivariateCauchyCoefficient
+import GeneralizedLogarithms.MultivariateColumnSeries
+import GeneralizedLogarithms.MultivariateTailBudget
+import GeneralizedLogarithms.MultivariateTailNorm
+import GeneralizedLogarithms.MultivariateRowScalarBounds
+import GeneralizedLogarithms.MultivariateMatrixTranslation
+import GeneralizedLogarithms.MultivariateNormalizedRows
+import GeneralizedLogarithms.MultivariateDeterminantDichotomy
+import GeneralizedLogarithms.MultivariateTranslatedDeterminant
+import GeneralizedLogarithms.MultivariateAnalyticSetup
+import GeneralizedLogarithms.MultivariateMatrixBounds
+import GeneralizedLogarithms.MultivariateDeterminantLimit
+import GeneralizedLogarithms.MultivariateDecayParameters
+import GeneralizedLogarithms.MultivariateDeterminantContradiction
+import GeneralizedLogarithms.MultivariateExceptionalWeights
+import GeneralizedLogarithms.MultivariateNumericalGeometry
+import GeneralizedLogarithms.MultivariateFixedParameters
+import GeneralizedLogarithms.MultivariateAnalyticConstruction
+import GeneralizedLogarithms.Main
+
+/-!
+# Linear forms in multiplicatively independent rational logarithms
+
+These modules connect multilogarithmic jets, curve contact, persistence and
+normal-space rigidity, together with lattice and collision components. The
+intrinsic curve inequality constructs its auxiliary polynomial and retains
+explicit geometric and numerical hypotheses. Supporting parameter lemmas prove
+the eventual longitudinal gap, volume decay and directed transverse separation.
+The compact logarithm ideal has the expected support and exceptional degree;
+actual jet packets are identified with its affine quotient packets. Saturated
+rational-subspace lattices and lower-rank transfer supply recursive exceptional
+families in integer general position. The exact-height rank-one base case is
+derived from the original main theorem. The geometric models are constructed
+for all relevant curves, giving ampleness and actual jet interpolation with
+controlled polynomial degree along a cofinal integral scale. Fixed rational
+parameter intervals and the exact low-mode capacity asymptotics are proved.
+Rational coefficient extension and the weighted polynomial span connect these
+jets to full-row minors. The fixed logarithm truncations used for arithmetic
+also have nonzero rational minors, by the weighted coordinate change.
+The actual rational minors have both arithmetic lower bounds and multivariate
+analytic upper bounds. The Taylor-mode dichotomy, all parameter choices and
+the final induction are discharged in `Main`. The theorem
+`GeneralizedLogarithms.logarithmic_linear_forms` proves the eventual bound for
+every logarithmic rank and every real exponent strictly greater than that rank.
+-/
+
+/-- info: 'GeneralizedLogarithms.logarithmic_linear_forms' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms GeneralizedLogarithms.logarithmic_linear_forms
