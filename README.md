@@ -31,12 +31,6 @@ Follow [BUILDING.md](BUILDING.md) to prepare a fresh checkout, apply the upstrea
 
 ## Proof structure
 
-1. Lower-rank bounds transfer through rational-subspace lattices. Failure of the desired bound then gives exceptional integer forms in general position, with sufficiently separated logarithmic weights.
-2. Multilogarithmic jets, codimension-dependent multiplicity bounds, normal-space rigidity, and curve inequalities give geometric interpolation and nonzero rational minors.
-3. Denominator clearing gives an arithmetic lower bound for those determinants.
-4. Row translation and Taylor expansion give an analytic upper bound, using both small linear forms and collisions of transverse and Taylor modes.
-5. A simultaneous parameter choice makes the two determinant bounds incompatible. Strong induction on $k$ proves the theorem.
-
 The final assembly is in [`Main.lean`](GeneralizedLogarithms/Main.lean). The determinant contradiction is [`MultivariateDeterminantContradiction.impossible`](GeneralizedLogarithms/MultivariateDeterminantContradiction.lean), and the parameter existence theorem is [`MultivariateFixedParameters.exists_fixed`](GeneralizedLogarithms/MultivariateFixedParameters.lean).
 
 ## Dependencies and attribution
