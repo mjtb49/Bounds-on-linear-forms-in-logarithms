@@ -8,6 +8,12 @@ git = "https://github.com/jdb19937/log-irrationality-measure.git"
 rev = "09aeeb095cebdce6791e24eff7f16d227edcdcb6"
 subDir = "lean"
 
+# Mathlib revision used for comparator validation with Lean 4.35.0.
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "fad34067088f101a9a302d9393aacbffa190694c"
+
 [[lean_lib]]
 name = "GeneralizedLogarithms"
 roots = ["GeneralizedLogarithms"]
@@ -16,3 +22,13 @@ globs = ["GeneralizedLogarithms", "GeneralizedLogarithms.+"]
 [[lean_lib]]
 name = "Verification"
 roots = ["Verification"]
+
+# These are deliberately separate targets: Solution must not import Challenge.
+# Challenge contains an intentional `sorry` and is not a default build target.
+[[lean_lib]]
+name = "Challenge"
+roots = ["Challenge"]
+
+[[lean_lib]]
+name = "Solution"
+roots = ["Solution"]

@@ -4,3 +4,6 @@
 *.json text eol=lf
 *.md text eol=lf
 lean-toolchain text eol=lf
+# Unified diff context markers on empty lines require a trailing space.
+*.patch text eol=lf whitespace=-blank-at-eol
+verification/*.txt text eol=lf

@@ -1,0 +1,266 @@
+diff --git a/lean/LogIrrationalityMeasure/Ampleness/AmpleCurveDegreePositive.lean b/lean/LogIrrationalityMeasure/Ampleness/AmpleCurveDegreePositive.lean
+index a8d571d..49952b8 100644
+--- a/lean/LogIrrationalityMeasure/Ampleness/AmpleCurveDegreePositive.lean
++++ b/lean/LogIrrationalityMeasure/Ampleness/AmpleCurveDegreePositive.lean
+@@ -81,8 +81,8 @@ theorem section_euler_degree_pos [IsIntegral X]
+   have heq : ∀ x : X, ∃ U : X.affineOpens, x ∈ U.1 ∧
+       ∃ f : (L.pow 0).sheaf.restrict U.1.ι ≅ O U.1.toScheme,
+       ∃ e : L.sheaf.restrict U.1.ι ≅ O U.1.toScheme,
+-        I.ideal U = Ideal.span {U.1.topIso.hom
+-          (endValue (f.inv ≫ (Scheme.Modules.restrictFunctor U.1.ι).map s ≫ e.hom))} := by
++        I.ideal U = Ideal.span {(U.1.topIso.hom
++          (endValue (f.inv ≫ (Scheme.Modules.restrictFunctor U.1.ι).map s ≫ e.hom)))} := by
+     intro x
+     obtain ⟨U, hx, ⟨e⟩, -⟩ := common_affine_frames L L x
+     refine ⟨U, hx, Scheme.Modules.restrictUnitIso U.1.ι, e, ?_⟩
+diff --git a/lean/LogIrrationalityMeasure/Ampleness/ExceptionalCurveDegree.lean b/lean/LogIrrationalityMeasure/Ampleness/ExceptionalCurveDegree.lean
+index bcd7212..6cb7df3 100644
+--- a/lean/LogIrrationalityMeasure/Ampleness/ExceptionalCurveDegree.lean
++++ b/lean/LogIrrationalityMeasure/Ampleness/ExceptionalCurveDegree.lean
+@@ -43,8 +43,8 @@ theorem inverseSection_zeroIdeal (J : LineBundle Y) (ι : J.sheaf ⟶ O Y)
+     let b := tensorFrame J J.inverse V.1 (e' y) (f' y)
+     rw [zeroIdeal_on_frame J.inverse (inverseSection J ι) V (f' y),
+       imageIdealSheaf_on_frame ι V (e' y)]
+-    change Ideal.span {affineMapCoefficient V a (f' y)
+-      ((lineTensorInverseIso J).inv ≫ tensorInclusion J J.inverse ι)} = _
++    change Ideal.span {(affineMapCoefficient V a (f' y)
++      ((lineTensorInverseIso J).inv ≫ tensorInclusion J J.inverse ι))} = _
+     erw [affineMapCoefficient_comp V a b (f' y),
+       ← Ideal.span_singleton_mul_span_singleton]
+     have hu : IsUnit (affineMapCoefficient V a b (lineTensorInverseIso J).inv) := by
+diff --git a/lean/LogIrrationalityMeasure/Cohomology/CartierEulerDifference.lean b/lean/LogIrrationalityMeasure/Cohomology/CartierEulerDifference.lean
+index 8d2e488..c46a456 100644
+--- a/lean/LogIrrationalityMeasure/Cohomology/CartierEulerDifference.lean
++++ b/lean/LogIrrationalityMeasure/Cohomology/CartierEulerDifference.lean
+@@ -34,8 +34,8 @@ theorem cartier_euler_difference
+     (heq : ∀ x : X, ∃ U : X.affineOpens, x ∈ U.1 ∧
+       ∃ e : M.sheaf.restrict U.1.ι ≅ O U.1.toScheme,
+       ∃ e' : N.sheaf.restrict U.1.ι ≅ O U.1.toScheme,
+-        I.ideal U = Ideal.span {U.1.topIso.hom
+-          (endValue (e.inv ≫ (Scheme.Modules.restrictFunctor U.1.ι).map φ ≫ e'.hom))})
++        I.ideal U = Ideal.span {(U.1.topIso.hom
++          (endValue (e.inv ≫ (Scheme.Modules.restrictFunctor U.1.ι).map φ ≫ e'.hom)))})
+     (d : ℕ)
+     (hfiniteM : ∀ q ≤ d, letI := Module.compHom (cohomology M.sheaf q) (baseScalars p)
+       FiniteDimensional ℂ (cohomology M.sheaf q))
+diff --git a/lean/LogIrrationalityMeasure/Cohomology/CartierMixedEuler.lean b/lean/LogIrrationalityMeasure/Cohomology/CartierMixedEuler.lean
+index dcb8a7f..48973be 100644
+--- a/lean/LogIrrationalityMeasure/Cohomology/CartierMixedEuler.lean
++++ b/lean/LogIrrationalityMeasure/Cohomology/CartierMixedEuler.lean
+@@ -74,9 +74,9 @@ theorem mixedCartierPower_zeroIdeal_frames (L M : LineBundle X)
+     ∀ x : X, ∃ U : X.affineOpens, x ∈ U.1 ∧
+       ∃ e : ((L.pow n).tensor M).sheaf.restrict U.1.ι ≅ O U.1.toScheme,
+       ∃ e' : ((L.pow (n+1)).tensor M).sheaf.restrict U.1.ι ≅ O U.1.toScheme,
+-        (zeroIdeal L s).ideal U = Ideal.span {U.1.topIso.hom
++        (zeroIdeal L s).ideal U = Ideal.span {(U.1.topIso.hom
+           (endValue (e.inv ≫ (Scheme.Modules.restrictFunctor U.1.ι).map
+-            (mixedCartierPowerMultiply L M s n) ≫ e'.hom))} := by
++            (mixedCartierPowerMultiply L M s n) ≫ e'.hom)))} := by
+   intro x
+   obtain ⟨U, hx, ⟨e⟩, ⟨f⟩⟩ := common_affine_frames L M x
+   refine ⟨U, hx,
+diff --git a/lean/LogIrrationalityMeasure/Geometry/CartierDegreeLength.lean b/lean/LogIrrationalityMeasure/Geometry/CartierDegreeLength.lean
+index c5d49f4..d08e9d2 100644
+--- a/lean/LogIrrationalityMeasure/Geometry/CartierDegreeLength.lean
++++ b/lean/LogIrrationalityMeasure/Geometry/CartierDegreeLength.lean
+@@ -22,8 +22,8 @@ theorem cartier_euler_difference_eq_sum_local_lengths
+     (heq : ∀ x : X, ∃ U : X.affineOpens, x ∈ U.1 ∧
+       ∃ e : M.sheaf.restrict U.1.ι ≅ O U.1.toScheme,
+       ∃ d : N.sheaf.restrict U.1.ι ≅ O U.1.toScheme,
+-        I.ideal U = Ideal.span {U.1.topIso.hom
+-          (endValue (e.inv ≫ (Scheme.Modules.restrictFunctor U.1.ι).map φ ≫ d.hom))})
++        I.ideal U = Ideal.span {(U.1.topIso.hom
++          (endValue (e.inv ≫ (Scheme.Modules.restrictFunctor U.1.ι).map φ ≫ d.hom)))})
+     (hfiniteM : ∀ n ≤ 1, letI := Module.compHom (cohomology M.sheaf n) (baseScalars p)
+       FiniteDimensional ℂ (cohomology M.sheaf n))
+     (hfiniteN : ∀ n ≤ 1, letI := Module.compHom (cohomology N.sheaf n) (baseScalars p)
+diff --git a/lean/LogIrrationalityMeasure/Geometry/CartierSequence.lean b/lean/LogIrrationalityMeasure/Geometry/CartierSequence.lean
+index 283c104..6013e95 100644
+--- a/lean/LogIrrationalityMeasure/Geometry/CartierSequence.lean
++++ b/lean/LogIrrationalityMeasure/Geometry/CartierSequence.lean
+@@ -53,15 +53,15 @@ theorem exact (p : X ⟶ Spec (CommRingCat.of ℂ))
+     (heq : ∀ x : X, ∃ U : X.affineOpens, x ∈ U.1 ∧
+       ∃ e : M.sheaf.restrict U.1.ι ≅ O U.1.toScheme,
+       ∃ d : N.sheaf.restrict U.1.ι ≅ O U.1.toScheme,
+-        I.ideal U = Ideal.span {U.1.topIso.hom
+-          (endValue (e.inv ≫ (Scheme.Modules.restrictFunctor U.1.ι).map φ ≫ d.hom))}) :
++        I.ideal U = Ideal.span {(U.1.topIso.hom
++          (endValue (e.inv ≫ (Scheme.Modules.restrictFunctor U.1.ι).map φ ≫ d.hom)))}) :
+     ∃ hz : φ ≫ LineClosedUnit.map I.subschemeι N = 0,
+       (ShortComplex.mk φ (LineClosedUnit.map I.subschemeι N) hz).ShortExact := by
+   have local_exact (U : X.affineOpens)
+       (e : M.sheaf.restrict U.1.ι ≅ O U.1.toScheme)
+       (d : N.sheaf.restrict U.1.ι ≅ O U.1.toScheme)
+-      (hI : I.ideal U = Ideal.span {U.1.topIso.hom
+-        (endValue (e.inv ≫ (Scheme.Modules.restrictFunctor U.1.ι).map φ ≫ d.hom))}) :=
++      (hI : I.ideal U = Ideal.span {(U.1.topIso.hom
++        (endValue (e.inv ≫ (Scheme.Modules.restrictFunctor U.1.ι).map φ ≫ d.hom)))}) :=
+     PrincipalSequence.exact (I.subschemeι ∣_ U.1)
+       (e.inv ≫ (Scheme.Modules.restrictFunctor U.1.ι).map φ ≫ d.hom)
+       (restriction_principal p I U _ hI)
+diff --git a/lean/LogIrrationalityMeasure/Geometry/CurveDegreeAdditivity.lean b/lean/LogIrrationalityMeasure/Geometry/CurveDegreeAdditivity.lean
+index e752e19..76d9a40 100644
+--- a/lean/LogIrrationalityMeasure/Geometry/CurveDegreeAdditivity.lean
++++ b/lean/LogIrrationalityMeasure/Geometry/CurveDegreeAdditivity.lean
+@@ -38,8 +38,8 @@ theorem section_tensor_euler_add [IsIntegral X]
+   have heqTensor : ∀ x : X, ∃ U : X.affineOpens, x ∈ U.1 ∧
+       ∃ f : M.sheaf.restrict U.1.ι ≅ O U.1.toScheme,
+       ∃ e : (L.tensor M).sheaf.restrict U.1.ι ≅ O U.1.toScheme,
+-        I.ideal U = Ideal.span {U.1.topIso.hom
+-          (endValue (f.inv ≫ (Scheme.Modules.restrictFunctor U.1.ι).map φ ≫ e.hom))} := by
++        I.ideal U = Ideal.span {(U.1.topIso.hom
++          (endValue (f.inv ≫ (Scheme.Modules.restrictFunctor U.1.ι).map φ ≫ e.hom)))} := by
+     intro x
+     obtain ⟨U, hx, ⟨e⟩, ⟨f⟩⟩ := common_affine_frames L M x
+     refine ⟨U, hx, f, tensorFrame L.sheaf M.sheaf U.1 e f, ?_⟩
+@@ -48,8 +48,8 @@ theorem section_tensor_euler_add [IsIntegral X]
+   have heqSection : ∀ x : X, ∃ U : X.affineOpens, x ∈ U.1 ∧
+       ∃ f : (L.pow 0).sheaf.restrict U.1.ι ≅ O U.1.toScheme,
+       ∃ e : L.sheaf.restrict U.1.ι ≅ O U.1.toScheme,
+-        I.ideal U = Ideal.span {U.1.topIso.hom
+-          (endValue (f.inv ≫ (Scheme.Modules.restrictFunctor U.1.ι).map s ≫ e.hom))} := by
++        I.ideal U = Ideal.span {(U.1.topIso.hom
++          (endValue (f.inv ≫ (Scheme.Modules.restrictFunctor U.1.ι).map s ≫ e.hom)))} := by
+     intro x
+     obtain ⟨U, hx, ⟨e⟩, ⟨f⟩⟩ := common_affine_frames L M x
+     refine ⟨U, hx, Scheme.Modules.restrictUnitIso U.1.ι, e, ?_⟩
+diff --git a/lean/LogIrrationalityMeasure/Geometry/CurveLocalOrder.lean b/lean/LogIrrationalityMeasure/Geometry/CurveLocalOrder.lean
+index 551ce62..72cf508 100644
+--- a/lean/LogIrrationalityMeasure/Geometry/CurveLocalOrder.lean
++++ b/lean/LogIrrationalityMeasure/Geometry/CurveLocalOrder.lean
+@@ -42,8 +42,9 @@ theorem enatToIntegerOrder_monotone : Monotone enatToIntegerOrder := by
+ noncomputable def localAddValuation
+     (A : Type*) [CommRing A] [IsDomain A] [IsDiscreteValuationRing A] :
+     AddValuation A (WithTop ℤ) :=
+-  (IsDiscreteValuationRing.addVal A).map enatToIntegerOrder
+-    enatToIntegerOrder_top enatToIntegerOrder_monotone
++  (IsDiscreteValuationRing.addVal A).map
++    { enatToIntegerOrder with monotone' := enatToIntegerOrder_monotone }
++    enatToIntegerOrder_top
+ 
+ @[simp] theorem localAddValuation_apply
+     {A : Type*} [CommRing A] [IsDomain A] [IsDiscreteValuationRing A] (a : A) :
+diff --git a/lean/LogIrrationalityMeasure/Geometry/CurveSectionDegree.lean b/lean/LogIrrationalityMeasure/Geometry/CurveSectionDegree.lean
+index f6b7139..ecced14 100644
+--- a/lean/LogIrrationalityMeasure/Geometry/CurveSectionDegree.lean
++++ b/lean/LogIrrationalityMeasure/Geometry/CurveSectionDegree.lean
+@@ -73,8 +73,8 @@ theorem euler_difference_eq_sum_zero_orders [IsIntegral X]
+   have heq : ∀ x : X, ∃ U : X.affineOpens, x ∈ U.1 ∧
+       ∃ e : (L.pow 0).sheaf.restrict U.1.ι ≅ O U.1.toScheme,
+       ∃ d : L.sheaf.restrict U.1.ι ≅ O U.1.toScheme,
+-        I.ideal U = Ideal.span {U.1.topIso.hom
+-          (endValue (e.inv ≫ (Scheme.Modules.restrictFunctor U.1.ι).map s ≫ d.hom))} := by
++        I.ideal U = Ideal.span {(U.1.topIso.hom
++          (endValue (e.inv ≫ (Scheme.Modules.restrictFunctor U.1.ι).map s ≫ d.hom)))} := by
+     intro x
+     let F := affineFrameAt L x
+     refine ⟨F.openSet, F.mem, Scheme.Modules.restrictUnitIso F.openSet.1.ι, F.frame, ?_⟩
+diff --git a/lean/LogIrrationalityMeasure/Geometry/GeneralCartierDegreeLength.lean b/lean/LogIrrationalityMeasure/Geometry/GeneralCartierDegreeLength.lean
+index a34f373..12bab83 100644
+--- a/lean/LogIrrationalityMeasure/Geometry/GeneralCartierDegreeLength.lean
++++ b/lean/LogIrrationalityMeasure/Geometry/GeneralCartierDegreeLength.lean
+@@ -25,8 +25,8 @@ theorem cartier_euler_difference_eq_sum_local_lengths
+     (heq : ∀ x : X, ∃ U : X.affineOpens, x ∈ U.1 ∧
+       ∃ e : M.sheaf.restrict U.1.ι ≅ O U.1.toScheme,
+       ∃ d : N.sheaf.restrict U.1.ι ≅ O U.1.toScheme,
+-        I.ideal U = Ideal.span {U.1.topIso.hom
+-          (endValue (e.inv ≫ (Scheme.Modules.restrictFunctor U.1.ι).map φ ≫ d.hom))})
++        I.ideal U = Ideal.span {(U.1.topIso.hom
++          (endValue (e.inv ≫ (Scheme.Modules.restrictFunctor U.1.ι).map φ ≫ d.hom)))})
+     (hfiniteM : ∀ n ≤ 1, letI := Module.compHom (cohomology M.sheaf n) (baseScalars p)
+       FiniteDimensional ℂ (cohomology M.sheaf n))
+     (hfiniteN : ∀ n ≤ 1, letI := Module.compHom (cohomology N.sheaf n) (baseScalars p)
+diff --git a/lean/LogIrrationalityMeasure/Geometry/SectionCartierPower.lean b/lean/LogIrrationalityMeasure/Geometry/SectionCartierPower.lean
+index cff121b..6db0d50 100644
+--- a/lean/LogIrrationalityMeasure/Geometry/SectionCartierPower.lean
++++ b/lean/LogIrrationalityMeasure/Geometry/SectionCartierPower.lean
+@@ -23,9 +23,9 @@ theorem cartierPower_zeroIdeal_frames (L : LineBundle X) (s : GlobalSections X L
+     (n : ℕ) : ∀ x : X, ∃ U : X.affineOpens, x ∈ U.1 ∧
+       ∃ e : (L.pow n).sheaf.restrict U.1.ι ≅ O U.1.toScheme,
+       ∃ e' : (L.pow (n+1)).sheaf.restrict U.1.ι ≅ O U.1.toScheme,
+-        (zeroIdeal L s).ideal U = Ideal.span {U.1.topIso.hom
++        (zeroIdeal L s).ideal U = Ideal.span {(U.1.topIso.hom
+           (endValue (e.inv ≫ (Scheme.Modules.restrictFunctor U.1.ι).map
+-            (cartierPowerMultiply L s n) ≫ e'.hom))} := by
++            (cartierPowerMultiply L s n) ≫ e'.hom)))} := by
+   intro x
+   obtain ⟨V,hxV,⟨eV⟩⟩ := L.locallyRankOne x
+   obtain ⟨U,hU,hxU,hUV⟩ := exists_isAffineOpen_mem_and_subset hxV
+diff --git a/lean/LogIrrationalityMeasure/Geometry/SectionZeroStalk.lean b/lean/LogIrrationalityMeasure/Geometry/SectionZeroStalk.lean
+index 4d4e587..1fc3bc0 100644
+--- a/lean/LogIrrationalityMeasure/Geometry/SectionZeroStalk.lean
++++ b/lean/LogIrrationalityMeasure/Geometry/SectionZeroStalk.lean
+@@ -46,8 +46,8 @@ theorem zero_stalk_kernel (L : LineBundle X) (s : GlobalSections X L.sheaf)
+     (y : (SectionZeroIdeal.zeroIdeal L s).subscheme)
+     (hy : (SectionZeroIdeal.zeroIdeal L s).subschemeι y ∈ U.1) :
+     RingHom.ker ((SectionZeroIdeal.zeroIdeal L s).subschemeι.stalkMap y).hom =
+-      Ideal.span {(X.presheaf.germ U.1 _ hy)
+-        (U.1.topIso.hom (coefficient e (restrictSection U.1.ι s)))} := by
++      Ideal.span {((X.presheaf.germ U.1 _ hy)
++        (U.1.topIso.hom (coefficient e (restrictSection U.1.ι s))))} := by
+   rw [stalkMap_ker_eq_map_affine_ker _ U.1 U.2 y hy,
+     (SectionZeroIdeal.zeroIdeal L s).ker_subschemeι_app U,
+     SectionZeroIdeal.zeroIdeal_on_frame L s U e,
+diff --git a/lean/LogIrrationalityMeasure/LocalAlgebra/FiniteFreeResolutionExt.lean b/lean/LogIrrationalityMeasure/LocalAlgebra/FiniteFreeResolutionExt.lean
+index 5917a2b..e1524f0 100644
+--- a/lean/LogIrrationalityMeasure/LocalAlgebra/FiniteFreeResolutionExt.lean
++++ b/lean/LogIrrationalityMeasure/LocalAlgebra/FiniteFreeResolutionExt.lean
+@@ -29,7 +29,7 @@ def projectiveResolutionOfExact (P : ChainComplex C ℕ) (M : C)
+     cases n with
+     | zero =>
+       rw [ChainComplex.quasiIsoAt₀_iff,
+-        ShortComplex.quasiIso_iff_of_zeros' _ (by simp; rfl) (by simp; rfl)
++        ShortComplex.quasiIso_iff_of_zeros' _ (by simp) (by simp; rfl)
+           (by simp; rfl)]
+       simpa [ChainComplex.toSingle₀Equiv] using! And.intro hzero hepi
+     | succ n =>
+diff --git a/lean/LogIrrationalityMeasure/LocalAlgebra/IdealTensorPowers.lean b/lean/LogIrrationalityMeasure/LocalAlgebra/IdealTensorPowers.lean
+index 2fdfa30..bab0074 100644
+--- a/lean/LogIrrationalityMeasure/LocalAlgebra/IdealTensorPowers.lean
++++ b/lean/LogIrrationalityMeasure/LocalAlgebra/IdealTensorPowers.lean
+@@ -54,8 +54,8 @@ private lemma affineMapCoefficient_id {M : X.Modules} (U : X.affineOpens)
+ 
+ lemma idealPowerInclusion_ideal (J : LineBundle X) (ι : J.sheaf ⟶ O X)
+     (U : X.affineOpens) (e : J.sheaf.restrict U.1.ι ≅ O U.1.toScheme) (n : ℕ) :
+-    Ideal.span {affineMapCoefficient U (idealPowerFrame J U.1 e n)
+-      (Scheme.Modules.restrictUnitIso U.1.ι) (idealPowerInclusion J ι n)} =
++    Ideal.span {(affineMapCoefficient U (idealPowerFrame J U.1 e n)
++      (Scheme.Modules.restrictUnitIso U.1.ι) (idealPowerInclusion J ι n))} =
+       (Ideal.span {affineMapCoefficient U e (Scheme.Modules.restrictUnitIso U.1.ι) ι})^n := by
+   induction n with
+   | zero =>
+@@ -63,12 +63,12 @@ lemma idealPowerInclusion_ideal (J : LineBundle X) (ι : J.sheaf ⟶ O X)
+     exact (congrArg (fun r : Γ(X,U.1) => Ideal.span {r})
+       (affineMapCoefficient_id U (Scheme.Modules.restrictUnitIso U.1.ι))).trans (by simp)
+   | succ n ih =>
+-    change Ideal.span {affineMapCoefficient U (tensorFrame J (J.pow n) U.1 e (idealPowerFrame J U.1 e n))
+-      (Scheme.Modules.restrictUnitIso U.1.ι) (tensorInclusion J (J.pow n) ι ≫ idealPowerInclusion J ι n)} = _
++    change Ideal.span {(affineMapCoefficient U (tensorFrame J (J.pow n) U.1 e (idealPowerFrame J U.1 e n))
++      (Scheme.Modules.restrictUnitIso U.1.ι) (tensorInclusion J (J.pow n) ι ≫ idealPowerInclusion J ι n))} = _
+     erw [affineMapCoefficient_comp U _ (idealPowerFrame J U.1 e n),
+       ← Ideal.span_singleton_mul_span_singleton,ih]
+-    rw [show Ideal.span {affineMapCoefficient U (tensorFrame J (J.pow n) U.1 e (idealPowerFrame J U.1 e n))
+-      (idealPowerFrame J U.1 e n) (tensorInclusion J (J.pow n) ι)} =
++    rw [show Ideal.span {(affineMapCoefficient U (tensorFrame J (J.pow n) U.1 e (idealPowerFrame J U.1 e n))
++      (idealPowerFrame J U.1 e n) (tensorInclusion J (J.pow n) ι))} =
+       Ideal.span {affineMapCoefficient U e (Scheme.Modules.restrictUnitIso U.1.ι) ι} from
+         tensor_inclusion_ideal J (J.pow n) ι U e (idealPowerFrame J U.1 e n)]
+     rw [pow_succ']
+diff --git a/lean/LogIrrationalityMeasure/Polynomials/PolynomialPoleBound.lean b/lean/LogIrrationalityMeasure/Polynomials/PolynomialPoleBound.lean
+index 19f4b69..e48848a 100644
+--- a/lean/LogIrrationalityMeasure/Polynomials/PolynomialPoleBound.lean
++++ b/lean/LogIrrationalityMeasure/Polynomials/PolynomialPoleBound.lean
+@@ -10,8 +10,11 @@ namespace LogExponent.PolynomialPoleBound
+ variable {K C σ : Type*} [Field K] [CommRing C] [Algebra C K]
+ 
+ def realValuation (v : AddValuation K (WithTop ℤ)) : AddValuation K (WithTop ℝ) :=
+-  v.map (Int.castAddHom ℝ).withTopMap rfl
+-    ((show Monotone (fun z : ℤ => (z : ℝ)) from Int.cast_mono).withTop_map)
++  v.map
++    { (Int.castAddHom ℝ).withTopMap with
++      monotone' :=
++        ((show Monotone (fun z : ℤ => (z : ℝ)) from Int.cast_mono).withTop_map) }
++    rfl
+ 
+ @[simp] theorem realValuation_apply (v : AddValuation K (WithTop ℤ)) (x : K) :
+     realValuation v x = WithTop.map (fun z : ℤ => (z : ℝ)) (v x) := rfl

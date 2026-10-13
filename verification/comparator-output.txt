@@ -1,0 +1,44 @@
+Build completed successfully (9962 jobs).
+Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, rational_logarithmic_linear_forms, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam] from Solution
+Running Lean paranoid kernel on solution
+Lean paranoid kernel accepts the solution
+Running lean4lean kernel on solution
+[anonymous]:thmDecl SheafOfModules.instHasColimitsOfShapeOfPresheafOfModulesObjFunctorOppositeRingCatIsSheaf: lean4lean took 1104
+[anonymous]:thmDecl Algebra.Generators.CotangentSpace.fst_compEquiv: lean4lean took 1263
+[anonymous]:thmDecl LogIrrationalityMeasure.LogExponentSeshadri.LineBundleGluing.presheaf._proof_14: lean4lean took 2593
+[anonymous]:defnDecl LogIrrationalityMeasure.LogExponentSeshadri.LineBundleGluing.presheaf: lean4lean took 2745
+[anonymous]:thmDecl LogIrrationalityMeasure.LogExponentSeshadri.ModulePresheaf.pushforwardPushforwardAdj._proof_3: lean4lean took 3261
+[anonymous]:thmDecl LogIrrationalityMeasure.LogExponentSeshadri.ModulePresheaf.pushforwardPushforwardAdj._proof_4: lean4lean took 3153
+[anonymous]:defnDecl LogIrrationalityMeasure.LogExponentSeshadri.Geometry.moduleSheafificationRestrict: lean4lean took 1505
+[anonymous]:thmDecl ModuleCat.monoidalCategory._proof_4: lean4lean took 1694
+[anonymous]:thmDecl LogIrrationalityMeasure.LogExponentSeshadri.TensorPure.sheafify_restrict_unit: lean4lean took 2556
+[anonymous]:thmDecl LogIrrationalityMeasure.LogExponent.CurveProductFormula.principalDivisor_degree_zero: lean4lean took 55429
+[anonymous]:thmDecl CategoryTheory.Abelian.Ext.covariant_sequence_exact₃': lean4lean took 1183
+[anonymous]:thmDecl PresheafOfModules.freeObj._proof_2: lean4lean took 38168
+[anonymous]:thmDecl LogIrrationalityMeasure.LogExponentSeshadri.LineBundleGluing.sheafification_unit_counit_map: lean4lean took 3291
+[anonymous]:thmDecl CategoryTheory.Abelian.Ext.covariant_sequence_exact₁': lean4lean took 1130
+[anonymous]:thmDecl LogIrrationalityMeasure.LogExponentSeshadri.LineBundleGluing.openFrame_unit_apply: lean4lean took 1004
+[anonymous]:thmDecl LogIrrationalityMeasure.LogExponentSeshadri.Geometry.modulePowRestrict_natural: lean4lean took 1183
+[anonymous]:thmDecl LogIrrationalityMeasure.LogExponentSeshadri.Geometry.powerSection_coefficient: lean4lean took 2928
+[anonymous]:thmDecl LogIrrationalityMeasure.LogExponentSeshadri.Geometry.moduleSectionMultiplyRight_restrict_frame: lean4lean took 1283
+[anonymous]:thmDecl LogIrrationalityMeasure.LogExponentSeshadri.Geometry.moduleTwistSection_frame: lean4lean took 1674
+[anonymous]:thmDecl LogIrrationalityMeasure.LogExponentSeshadri.Geometry.moduleTwistForward_frame: lean4lean took 1540
+[anonymous]:thmDecl LogIrrationalityMeasure.LogExponent.CurveFinitePushforwardCoherent.pushforward_isFinitePresentation: lean4lean took 7591
+[anonymous]:thmDecl LogIrrationalityMeasure.LogExponentSeshadri.OpenBaseChange.hom_app: lean4lean took 1208
+[anonymous]:thmDecl LogIrrationalityMeasure.LogExponentSeshadri.OpenBaseChange.tensor_pure: lean4lean took 3353
+[anonymous]:thmDecl LogIrrationalityMeasure.LogExponentSeshadri.OpenBaseChange.tensor_square: lean4lean took 2471
+[anonymous]:thmDecl LogIrrationalityMeasure.LogExponent.CurveFinitePushforwardCohomology.sectionsEquiv_image: lean4lean took 2294
+[anonymous]:thmDecl LogIrrationalityMeasure.LogExponent.AmpleGlobalGeneration.ample_eventual_global_generators: lean4lean took 2274
+checked 115118 declarations
+lean4lean kernel accepts the solution
+Running nanoda kernel on solution
+nanoda kernel accepts the solution
+Running con-leche kernel on solution
+con-leche: accepted 115121 declarations (--verified)
+con-leche kernel accepts the solution
+Running con-ron kernel on solution
+con-ron: accepted 115121 declarations (--verified)
+con-ron kernel accepts the solution
+Running Lean default kernel on solution
+Lean default kernel accepts the solution
+Your solution is okay!

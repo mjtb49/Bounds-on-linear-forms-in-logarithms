@@ -19,25 +19,15 @@ This proof arose out of my attempt at understanding OpenAI's recent improvements
 
 ## Verification status
 
-The existing formalization was checked with Lean 4.34.1 during AI-assisted development. All 90 proof modules, the aggregate import, and the expanded statement passed. The guarded axiom reports for the main theorem and expanded statement contain exactly
+On 2026-10-13, the maintainer ran the official `lake comparator --paranoid` with Lean 4.35.0 on Linux. The build completed successfully, and all six kernel checks accepted the solution: Lean paranoid, lean4lean, nanoda, con-leche, con-ron, and Lean default. Comparator finished with `Your solution is okay!`. The [saved transcript excerpt](verification/comparator-output.txt) records the final build and checking output supplied by the maintainer.
 
-```text
-[propext, Classical.choice, Quot.sound]
-```
+[`Challenge.lean`](Challenge.lean) imports only Mathlib and states `rational_logarithmic_linear_forms` with the height and independence definitions expanded. Its `by sorry` is the intentional challenge placeholder. [`Solution.lean`](Solution.lean) independently repeats that statement and proves it from the main theorem, without importing the challenge. [`comparator.json`](comparator.json) permits only `propext`, `Quot.sound`, and `Classical.choice`.
 
-These are Lean's standard axioms. The new sources contain no `sorry`, `admit`, custom axioms, `native_decide`, or `unsafe` declarations. The dependency's full build and its guarded axiom checks were also checked separately. These statements record the development checks; the commands below allow readers to reproduce verification from this repository.
+The committed Lean sources match the source snapshot from that successful run. The toolchain, dependency revisions, and [upstream compatibility patch](patches/log-dependency-435.patch) reproduce its proof inputs. Verification checks the formal statement; readers should inspect `Challenge.lean` to confirm that it expresses the mathematical claim above.
 
-## Build
+## Build and verify
 
-With Git and the `elan` Lean toolchain manager installed, open a terminal in the repository directory and run:
-
-```text
-lake exe cache get
-lake build
-lake env lean Verification.lean
-```
-
-The project pins its toolchain and dependencies. On Windows, `$env:LEAN_NUM_THREADS = '1'` in PowerShell reduces Lean worker threads before running these commands. The first build also compiles the upstream formalization and may take substantially longer than later builds. [BUILDING.md](BUILDING.md) explains the commands and the expected output.
+Follow [BUILDING.md](BUILDING.md) to prepare a fresh checkout, apply the upstream patch, and run the official comparator with its default sandbox and external checkers. The first build compiles the pinned dependencies from source; subsequent runs reuse completed work.
 
 ## Proof structure
 
@@ -53,4 +43,4 @@ The final assembly is in [`Main.lean`](GeneralizedLogarithms/Main.lean). The det
 
 This project extends and imports [jdb19937/log-irrationality-measure](https://github.com/jdb19937/log-irrationality-measure), pinned to commit [`09aeeb095cebdce6791e24eff7f16d227edcdcb6`](https://github.com/jdb19937/log-irrationality-measure/tree/09aeeb095cebdce6791e24eff7f16d227edcdcb6), using its `lean` subdirectory. That repository's README describes its proof as a module-by-module modification of [OpenAI's formalization of the irrationality measure of pi](https://github.com/openai/math), under `lean/OAI/NumberTheory/PiExponent/`.
 
-The toolchain is `leanprover/lean4:v4.34.1`. The upstream project pins [Mathlib](https://github.com/leanprover-community/mathlib4) to commit `d13f23b723b8a846827a245b89c10fc7d3f11612`. The upstream sources remain an external dependency.
+The toolchain is `leanprover/lean4:v4.35.0`. This project pins [Mathlib](https://github.com/leanprover-community/mathlib4) to commit `fad34067088f101a9a302d9393aacbffa190694c`; all dependency revisions are recorded in `lake-manifest.json`. The upstream logarithm formalization remains an external dependency, with a committed compatibility patch for two valuation API changes, a redundant tactic, and multiline singleton syntax. The patch does not change the mathematical statements.
