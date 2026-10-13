@@ -15,7 +15,7 @@ The logarithm is the real natural logarithm. Multiplicative independence means t
 The main declaration is [`GeneralizedLogarithms.logarithmic_linear_forms`](GeneralizedLogarithms/Main.lean). [`Verification.lean`](Verification.lean) restates it with the height and independence definitions expanded. See [the build and reading walkthrough](BUILDING.md) to compile the project and inspect the statement.
 
 # Note from the human
-This proof arose out of my attempt at understanding OpenAI's recent improvements to the irrationality measure of $\pi$ and the subsequent generalization to irrationality measures of logarithms of rational numbers. My input was minimal, I simply asked ChatGPT 5.6 why multiple exponentials in the matrix would not prove a strong bound on linear forms in logarithms, and told me it would and spat out this proof. I have read closely and think I understand the proof, and perhaps will try and write a human understandable explanation if there is interest. A nice consequence is that $\log_2(3)$ is irrationality measure at most $3$.
+This proof arose out of my attempt at understanding OpenAI's recent improvements to the irrationality measure of $\pi$ and the subsequent generalization to irrationality measures of logarithms of rational numbers. My input was minimal, I simply asked ChatGPT 5.6 why multiple exponentials in the matrix would not prove a strong bound on linear forms in logarithms, bit it told me that actually would work and spat out this proof. I have read closely and think I understand the proof, and perhaps will try and write a human understandable explanation if there is interest. A nice consequence is that $\log_2(3)$ is irrationality measure at most $3$.
 
 ## Verification status
 
